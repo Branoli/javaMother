@@ -65,21 +65,42 @@ public class Game
         point[2] = new Point(point[4].X, point[4].Y + 1);
         point[3] = new Point(point[4].X + 1, point[4].Y);
     }
-    public void Shift(int number)
+    protected boolean CheckMove(int number)
     {
+        boolean check = false;
         for (int i=0; i<point.length; i++)
         {
             if(point[i].X >= 0 && point[i].Y >= 0 && point[i].X < arrKnukle[0].length && point[i].Y < arrKnukle[0].length)
             {
                 if(number == arrKnukle[point[i].X][point[i].Y] && arrKnukle[point[i].X][point[i].Y] != 0)
                 {
-                    int temp = 0;
-                    temp = arrKnukle[point[i].X][point[i].Y];
-                    arrKnukle[point[i].X][point[i].Y] = 0;
-                    arrKnukle[point[4].X][point[4].Y] = temp;
-                    point[4].EditCoord(point[i].X, point[i].Y);
-                    SerchZeroAgaine();
+                    check = true;
                     break;
+                }
+                else check = false;
+            }
+            else check = false;
+        }
+        return check;
+    }
+    public void Shift(int number)
+    {
+        if (CheckMove(number))
+        {
+            for (int i=0; i<point.length; i++)
+            {
+                if(point[i].X >= 0 && point[i].Y >= 0 && point[i].X < arrKnukle[0].length && point[i].Y < arrKnukle[0].length)
+                {
+                    if(number == arrKnukle[point[i].X][point[i].Y] && arrKnukle[point[i].X][point[i].Y] != 0)
+                    {
+                        int temp = 0;
+                        temp = arrKnukle[point[i].X][point[i].Y];
+                        arrKnukle[point[i].X][point[i].Y] = 0;
+                        arrKnukle[point[4].X][point[4].Y] = temp;
+                        point[4].EditCoord(point[i].X, point[i].Y);
+                        SerchZeroAgaine();
+                        break;
+                    }
                 }
             }
         }
