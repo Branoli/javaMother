@@ -12,7 +12,7 @@ public class GameTwo extends Game
 
     public void UpShift(int number)
     {
-        if(CheckMove(number))
+        if(super.CheckMove(number))
         {
             historyMove.add(number);
             super.Shift(number);

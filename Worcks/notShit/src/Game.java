@@ -60,19 +60,19 @@ public class Game
     }
     private void SerchZeroAgaine()
     {
-        point[0] = new Point(point[4].X - 1, point[4].Y);
-        point[1] = new Point(point[4].X, point[4].Y - 1);
-        point[2] = new Point(point[4].X, point[4].Y + 1);
-        point[3] = new Point(point[4].X + 1, point[4].Y);
+        point[0] = new Point(point[4].getPointX() - 1, point[4].getPointY());
+        point[1] = new Point(point[4].getPointX(), point[4].getPointY() - 1);
+        point[2] = new Point(point[4].getPointX(), point[4].getPointY() + 1);
+        point[3] = new Point(point[4].getPointX() + 1, point[4].getPointY());
     }
     protected boolean CheckMove(int number)
     {
         boolean check = false;
         for (int i=0; i<point.length; i++)
         {
-            if(point[i].X >= 0 && point[i].Y >= 0 && point[i].X < arrKnukle[0].length && point[i].Y < arrKnukle[0].length)
+            if(point[i].getPointX() >= 0 && point[i].getPointY() >= 0 && point[i].getPointX() < arrKnukle[0].length && point[i].getPointY() < arrKnukle[0].length)
             {
-                if(number == arrKnukle[point[i].X][point[i].Y] && arrKnukle[point[i].X][point[i].Y] != 0)
+                if(number == arrKnukle[point[i].getPointX()][point[i].getPointY()] && arrKnukle[point[i].getPointX()][point[i].getPointY()] != 0)
                 {
                     check = true;
                     break;
@@ -89,15 +89,15 @@ public class Game
         {
             for (int i=0; i<point.length; i++)
             {
-                if(point[i].X >= 0 && point[i].Y >= 0 && point[i].X < arrKnukle[0].length && point[i].Y < arrKnukle[0].length)
+                if(point[i].getPointX() >= 0 && point[i].getPointY() >= 0 && point[i].getPointX() < arrKnukle[0].length && point[i].getPointY() < arrKnukle[0].length)
                 {
-                    if(number == arrKnukle[point[i].X][point[i].Y] && arrKnukle[point[i].X][point[i].Y] != 0)
+                    if(number == arrKnukle[point[i].getPointX()][point[i].getPointY()] && arrKnukle[point[i].getPointX()][point[i].getPointY()] != 0)
                     {
                         int temp = 0;
-                        temp = arrKnukle[point[i].X][point[i].Y];
-                        arrKnukle[point[i].X][point[i].Y] = 0;
-                        arrKnukle[point[4].X][point[4].Y] = temp;
-                        point[4].EditCoord(point[i].X, point[i].Y);
+                        temp = arrKnukle[point[i].getPointX()][point[i].getPointY()];
+                        arrKnukle[point[i].getPointX()][point[i].getPointY()] = 0;
+                        arrKnukle[point[4].getPointX()][point[4].getPointY()] = temp;
+                        point[4].EditCoord(point[i].getPointX(), point[i].getPointY());
                         SerchZeroAgaine();
                         break;
                     }

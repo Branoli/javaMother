@@ -1,7 +1,7 @@
 public class Point
 {
-    public int X;
-    public int Y;
+    private int X;
+    private int Y;
 
     public Point(int x, int y)
     {
@@ -12,5 +12,13 @@ public class Point
     {
         X = x;
         Y = y;
+    }
+    public int getPointX()
+    {
+        return X;
+    }
+    public int getPointY()
+    {
+        return Y;
     }
 }
